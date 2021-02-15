@@ -1,0 +1,13 @@
+blocks:
+- netmask: "255.255.255.0"
+  gateway: "10.0.10.1"
+  ips:
+  - ip: "10.0.10.101"
+    hostname: "user-host1"
+  - ip: "10.0.10.102"
+    hostname: "user-host2"
+  - ip: "10.0.10.103"
+    hostname: "user-host3"
+  - ip: "10.0.10.104"
+    hostname: "user-host4"
+

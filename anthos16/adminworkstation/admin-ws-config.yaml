@@ -1,0 +1,53 @@
+gcp:
+  # Path of the whitelisted service account's JSON key file
+  whitelistedServiceAccountKeyPath: "./component-access-key.json"
+# Specify which vCenter resources to use
+vCenter:
+  # The credentials and address GKE On-Prem should use to connect to vCenter
+  credentials:
+    address: "172.16.10.2"
+    # reference to vCenter credentials file
+    fileRef:
+      # read credentials from this file
+      path: credential.yaml
+      # entry in the credential file
+      entry: vCenter
+  datacenter: "GKE On-Prem"
+  datastore: "datastore1"
+  cluster: "GKE On-Prem"
+  network: "internal management"
+  resourcePool: "GKE On-Prem"
+  # Provide the path to vCenter CA certificate pub key for SSL verification
+  caCertPath: "/home/gkeadmin/gkeop-config/vcenter.pem"
+# The URL of the proxy for the jump host
+proxyUrl: ""
+adminWorkstation:
+  name: gke-admin-ws-210215-120340
+  cpus: 4
+  memoryMB: 8192
+  # The boot disk size of the admin workstation in GB. It is recommended to use a
+  # disk with at least 50 GB to host images decompressed from the bundle.
+  diskGB: 50
+  # Name for the persistent disk to be mounted to the home directory (ending in .vmdk).
+  # Any directory in the supplied path must be created before deployment.
+  dataDiskName: gke-on-prem-admin-workstation-data-disk/gke-admin-ws-210215-120340-data-disk.vmdk
+  # The size of the data disk in MB.
+  dataDiskMB: 512
+  network:
+    # The IP allocation mode: 'dhcp' or 'static'
+    ipAllocationMode: "static"
+    # The host config in static IP mode. Do not include if using DHCP
+    hostConfig:
+      # The IPv4 static IP address for the admin workstation
+      ip: "172.16.10.5"
+      # The IP address of the default gateway of the subnet in which the admin workstation
+      # is to be created
+      gateway: "172.16.10.1"
+      # The subnet mask of the network where you want to create your admin workstation
+      netmask: "255.255.255.0"
+      # The list of DNS nameservers to be used by the admin workstation
+      dns:
+      - "172.16.10.1"
+  # The URL of the proxy for the admin workstation
+  proxyUrl: ""
+  ntpServer: time.google.com

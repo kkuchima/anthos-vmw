@@ -1,0 +1,8 @@
+blocks:
+- netmask: "255.255.255.0"
+  gateway: "172.16.20.1"
+  ips:
+  - ip: "172.16.20.2"
+    hostname: "admin-lb-1"
+  - ip: "172.16.20.3"
+    hostname: "admin-lb-2"
